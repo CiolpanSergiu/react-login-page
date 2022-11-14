@@ -1,7 +1,28 @@
+$page-bg-color: #474747;
+$text-color: #454545;
+$btn-bg-color: rgb(237, 58, 146);
+$btn-bg-color-hover: rgb(197, 47, 134);
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+@mixin btn-style{
+  background-color: $btn-bg-color;
+  color: white;
+  font-weight: bold;
+  padding: .5rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  margin: 1rem 0;
+  box-shadow: 0 5px 5px lightgray;
+
+  &:hover{
+    background-color: $btn-bg-color-hover;
+  }
 }
 
 body{
@@ -11,4 +32,41 @@ body{
   height: 100vh;
   align-items: center;
   justify-content: center;
+  background-color: $page-bg-color;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  background-color: white;
+  border-radius: 9px;
+  color: $text-color;
+  font-size: 1.3rem;
+
+  label{
+    margin: .5rem 0;
+  }
+
+  input{
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    padding: .5rem;
+    box-shadow: 0 5px 5px lightgray;
+  }
+
+  button{
+    @include btn-style();
+  }
+}
+
+.centered-text{
+  text-align: center;
+}
+
+.helper-paragraph{
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 2px;
 }
