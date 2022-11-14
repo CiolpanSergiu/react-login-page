@@ -4,6 +4,8 @@ export default function CreateAccountPage() {
     return(
         <form action="" method="POST" className="form container">
 
+            <h2 className="centered-text">Log In</h2>
+
             <label htmlFor="login-email">Email</label>
             <input 
                 type="email" 
@@ -26,7 +28,7 @@ export default function CreateAccountPage() {
 
             <button className="create-account-login-bnt">Log In</button>
             
-            <p className="helper-paragraph">Don't have an account ?</p>
+            <p className="helper-paragraph centered-text">Don't have an account ?</p>
 
             <button className="create-account-singin-bnt">Sing In</button>
 

@@ -25,6 +25,16 @@ $btn-bg-color-hover: rgb(197, 47, 134);
   }
 }
 
+@mixin container-style{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 4rem;
+  background-color: white;
+  border-radius: 9px;
+  color: $text-color;
+  font-size: 1.3rem;
+}
+
 body{
   display: flex;
   flex-direction: column;
@@ -37,13 +47,12 @@ body{
 }
 
 form{
-  display: flex;
-  flex-direction: column;
-  padding: 4rem;
-  background-color: white;
-  border-radius: 9px;
-  color: $text-color;
-  font-size: 1.3rem;
+  @include container-style();
+
+  h2{
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
 
   label{
     margin: .5rem 0;
@@ -54,6 +63,20 @@ form{
     font-size: 1.3rem;
     padding: .5rem;
     box-shadow: 0 5px 5px lightgray;
+  }
+
+  button{
+    @include btn-style();
+  }
+}
+
+//using .after-login-page-container do not style anything
+.container{
+  @include container-style();
+
+  h2{
+    margin-bottom: 2rem;
+    max-width: 15rem;
   }
 
   button{
