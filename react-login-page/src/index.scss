@@ -70,8 +70,7 @@ form{
   }
 }
 
-//using .after-login-page-container do not style anything
-.container{
+.after-login-page{
   @include container-style();
 
   h2{
