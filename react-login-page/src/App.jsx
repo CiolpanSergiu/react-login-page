@@ -7,11 +7,28 @@ export default function App() {
 
   const [currentPage, setCurrentPage] = React.useState(
     {
-      singinPage: true,
-      loginPage: false,
+      singinPage: false,
+      loginPage: true,
       afterLoginPage: false
     }
   )
+
+  function clearInputBoxes() {
+    setCreateAccountData(
+      {
+        singinEmail: '',
+        singinPassword: '',
+        passwordConfirmation: ''
+      }
+    )
+
+    setLoginFormData(
+      {
+        loginEmail: '',
+        loginPassword: ''
+      }
+    )
+  }
 
   const [createAccountData, setCreateAccountData] = React.useState(
     {
@@ -47,7 +64,7 @@ export default function App() {
     })
   }
 
-  function goToLoginPage(event) {
+  function goToLoginPage() {
     setCurrentPage(
       {
         singinPage: false,
@@ -55,16 +72,10 @@ export default function App() {
         afterLoginPage: false
       }
     )
-    setCreateAccountData(
-      {
-        singinEmail: '',
-        singinPassword: '',
-        passwordConfirmation: ''
-      }
-    )
+    clearInputBoxes();
   }
 
-  function goToSinginPage(event) {
+  function goToSinginPage() {
     setCurrentPage(
       {
         singinPage: true,
@@ -72,12 +83,7 @@ export default function App() {
         afterLoginPage: false
       }
     )    
-    setLoginFormData(
-      {
-        loginEmail: '',
-        loginPassword: ''
-      }
-    )
+    clearInputBoxes();
   }
 
   function goToAfterLoginPage() {
@@ -112,7 +118,7 @@ export default function App() {
       {
         currentPage.afterLoginPage &&
         <AfterLoginPage 
-
+          goToLogin={goToLoginPage}
         />
       }
     </div>
