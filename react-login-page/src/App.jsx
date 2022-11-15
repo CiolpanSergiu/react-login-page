@@ -48,12 +48,18 @@ export default function App() {
   }
 
   function goToLoginPage(event) {
-    event.preventDefault();
     setCurrentPage(
       {
         singinPage: false,
         loginPage: true,
         afterLoginPage: false
+      }
+    )
+    setCreateAccountData(
+      {
+        singinEmail: '',
+        singinPassword: '',
+        passwordConfirmation: ''
       }
     )
   }

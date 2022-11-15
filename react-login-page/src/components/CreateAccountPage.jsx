@@ -1,8 +1,15 @@
 import React from "react";
+import { saveUserAccount } from "../functions";
 
 export default function CreateAccountPage(props) {
+
+    function handleSingin(event) {
+        event.preventDefault();
+        saveUserAccount(props);
+    }
+
     return(
-        <form action="" method="POST" className="form container">
+        <form className="form container">
 
             <h2 className="centered-text">Create Account</h2>
 
@@ -45,7 +52,7 @@ export default function CreateAccountPage(props) {
 
             <button 
                 className="create-account-singin-bnt"
-                onClick={props.goToLogin}
+                onClick={handleSingin}
             >
                 Sing In
             </button>
