@@ -30,11 +30,21 @@ export default function CreateAccountPage(props) {
                 required
             />
 
-            <button className="create-account-login-bnt">Log In</button>
+            <button 
+                className="create-account-login-bnt"
+                onClick={props.goToAfterLogin}
+            >
+                Log In
+            </button>
             
             <p className="helper-paragraph centered-text">Don't have an account ?</p>
 
-            <button className="create-account-singin-bnt">Sing In</button>
+            <button 
+                className="create-account-singin-bnt"
+                onClick={props.goToSingin}
+            >
+                Sing I
+            n</button>
 
         </form>
     )

@@ -38,6 +38,7 @@ export default function App() {
   }
 
   function handleLoginFormChange(event) {
+    
     setLoginFormData(prevState => {
       return {
         ...prevState,
@@ -46,17 +47,38 @@ export default function App() {
     })
   }
 
-  // function goToLoginPage() {
-  //   setCurrentPage(prevState => {...prevState, })
-  // }
+  function goToLoginPage(event) {
+    event.preventDefault();
+    setCurrentPage(
+      {
+        singinPage: false,
+        loginPage: true,
+        afterLoginPage: false
+      }
+    )
+  }
 
-  // function goToSinginPage() {
-  //   setCurrentPage(prevState => {...prevState, })    
-  // }
+  function goToSinginPage(event) {
+    event.preventDefault();
+    setCurrentPage(
+      {
+        singinPage: true,
+        loginPage: false,
+        afterLoginPage: false
+      }
+    )    
+  }
 
-  // function goToAfterLoginPage() {
-  //   setCurrentPage(prevState => {...prevState, })    
-  // }
+  function goToAfterLoginPage(event) {
+    event.preventDefault();
+    setCurrentPage(
+      {
+        singinPage: false,
+        loginPage: false,
+        afterLoginPage: true
+      }
+    )    
+  }
 
   return(
     <div>
@@ -65,6 +87,7 @@ export default function App() {
           <CreateAccountPage 
             handleChange={handleSinginFormChange}
             singinData={createAccountData}
+            goToLogin={goToLoginPage}
           />
       }
       {
@@ -72,6 +95,8 @@ export default function App() {
         <LoginPage 
           handleChange={handleLoginFormChange}
           loginData={loginFormData}
+          goToSingin={goToSinginPage}
+          goToAfterLogin={goToAfterLoginPage}
         />
       }
       {
