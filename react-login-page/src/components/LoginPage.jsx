@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CreateAccountPage() {
+export default function CreateAccountPage(props) {
     return(
         <form action="" method="POST" className="form container">
 
@@ -11,7 +11,9 @@ export default function CreateAccountPage() {
                 type="email" 
                 id="login-email" 
                 placeholder="test.email@gmail.com" 
-                name="login-email"
+                name="loginEmail"
+                onChange={props.handleChange}
+                value={props.loginData.loginEmail}
                 required 
             />
 
@@ -22,7 +24,9 @@ export default function CreateAccountPage() {
                 placeholder="Password123"
                 minLength={8}
                 maxLength={20}
-                name="login-password"
+                name="loginPassword"
+                onChange={props.handleChange}
+                value={props.loginData.loginPassword}
                 required
             />
 

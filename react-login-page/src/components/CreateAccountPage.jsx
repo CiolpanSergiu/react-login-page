@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CreateAccountPage() {
+export default function CreateAccountPage(props) {
     return(
         <form action="" method="POST" className="form container">
 
@@ -11,7 +11,9 @@ export default function CreateAccountPage() {
                 type="email" 
                 id="singin-email" 
                 placeholder="test.email@gmail.com" 
-                name="singin-email"
+                name="singinEmail"
+                onChange={props.handleChange}
+                value={props.singinData.singinEmail}
                 required 
             />
 
@@ -22,18 +24,22 @@ export default function CreateAccountPage() {
                 placeholder="Password123"
                 minLength={8}
                 maxLength={20}
-                name="singin-password"
+                name="singinPassword"
+                onChange={props.handleChange}
+                value={props.singinData.singinPassword}
                 required
             />
 
             <label htmlFor="singin-password-confirm">Password</label>
             <input 
                 type="password" 
-                id="singin-password-confirm" 
+                id="password-confirmation" 
                 placeholder="Password123"
                 minLength={8}
                 maxLength={20}
-                name="password-confirmation"
+                name="passwordConfirmation"
+                onChange={props.handleChange}
+                value={props.singinData.passwordConfirmation}
                 required
             />
 
