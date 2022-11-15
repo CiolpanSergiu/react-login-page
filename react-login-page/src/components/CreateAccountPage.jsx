@@ -21,7 +21,6 @@ export default function CreateAccountPage(props) {
                 name="singinEmail"
                 onChange={props.handleChange}
                 value={props.singinData.singinEmail}
-                required 
             />
 
             <label htmlFor="singin-password">Password</label>
@@ -29,12 +28,9 @@ export default function CreateAccountPage(props) {
                 type="password" 
                 id="singin-password" 
                 placeholder="Password123"
-                minLength={8}
-                maxLength={20}
                 name="singinPassword"
                 onChange={props.handleChange}
                 value={props.singinData.singinPassword}
-                required
             />
 
             <label htmlFor="singin-password-confirm">Password</label>
@@ -42,12 +38,9 @@ export default function CreateAccountPage(props) {
                 type="password" 
                 id="password-confirmation" 
                 placeholder="Password123"
-                minLength={8}
-                maxLength={20}
                 name="passwordConfirmation"
                 onChange={props.handleChange}
                 value={props.singinData.passwordConfirmation}
-                required
             />
 
             <button 

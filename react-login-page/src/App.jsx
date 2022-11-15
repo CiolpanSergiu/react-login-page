@@ -65,7 +65,6 @@ export default function App() {
   }
 
   function goToSinginPage(event) {
-    event.preventDefault();
     setCurrentPage(
       {
         singinPage: true,
@@ -73,10 +72,15 @@ export default function App() {
         afterLoginPage: false
       }
     )    
+    setLoginFormData(
+      {
+        loginEmail: '',
+        loginPassword: ''
+      }
+    )
   }
 
-  function goToAfterLoginPage(event) {
-    event.preventDefault();
+  function goToAfterLoginPage() {
     setCurrentPage(
       {
         singinPage: false,

@@ -1,6 +1,13 @@
 import React from "react";
+import { handleLogin } from "../functions";
 
 export default function CreateAccountPage(props) {
+
+    function onLogin(event) {
+        event.preventDefault();
+        handleLogin(props);
+    }
+
     return(
         <form action="" method="POST" className="form container">
 
@@ -14,7 +21,6 @@ export default function CreateAccountPage(props) {
                 name="loginEmail"
                 onChange={props.handleChange}
                 value={props.loginData.loginEmail}
-                required 
             />
 
             <label htmlFor="login-password">Password</label>
@@ -22,17 +28,14 @@ export default function CreateAccountPage(props) {
                 type="password" 
                 id="login-password" 
                 placeholder="Password123"
-                minLength={8}
-                maxLength={20}
                 name="loginPassword"
                 onChange={props.handleChange}
                 value={props.loginData.loginPassword}
-                required
             />
 
             <button 
                 className="create-account-login-bnt"
-                onClick={props.goToAfterLogin}
+                onClick={onLogin}
             >
                 Log In
             </button>
