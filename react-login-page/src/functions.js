@@ -11,16 +11,17 @@ function singinFormValidation(formData) {
     return false;
 }
 
+function checkIfPasswordsMatch(singinData) {
+    return singinData.singinPassword === singinData.passwordConfirmation;
+}
+
 export function saveUserAccount(props) {
 
     if(singinFormValidation(props.singinData)){
-        localStorage.setItem("userAccount", JSON.stringify(props.singinData));
-
-        const accountDetails = JSON.parse(localStorage.getItem('userAccount'));
-
-        if(accountDetails.singinPassword === accountDetails.passwordConfirmation){
+        if(checkIfPasswordsMatch(props.singinData)){
+            localStorage.setItem("userAccount", JSON.stringify(props.singinData));
             props.goToLogin();
-        } 
+        }
     }
 }
 
