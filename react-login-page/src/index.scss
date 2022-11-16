@@ -2,6 +2,7 @@ $page-bg-color: #474747;
 $text-color: #454545;
 $btn-bg-color: rgb(237, 58, 146);
 $btn-bg-color-hover: rgb(197, 47, 134);
+$error-msg-color: rgb(121, 48, 62);
 
 *{
   margin: 0;
@@ -85,10 +86,16 @@ form{
 
 .centered-text{
   text-align: center;
+  margin: .5rem auto;
 }
 
 .helper-paragraph{
   font-size: 1rem;
   font-style: italic;
   letter-spacing: 2px;
+}
+
+.error-msg{
+  color: $error-msg-color;
+  max-width: 15rem;
 }

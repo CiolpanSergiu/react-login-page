@@ -45,6 +45,20 @@ export default function App() {
     }
   )
 
+  const [errors, setErrors] = React.useState('');
+
+  function addError(msg) {
+    setErrors(prevState => prevState.includes(msg) ? prevState + '' : prevState + msg)
+  }
+
+  function removeError(error) {
+    setErrors(prevState => prevState.replace(error, ''));
+  }
+
+  function clearAllErrors() {
+    setErrors('');
+  }
+
   function handleSinginFormChange(event) {
     setCreateAccountData(prevState => {
       return {
@@ -65,6 +79,7 @@ export default function App() {
   }
 
   function goToLoginPage() {
+    clearAllErrors();
     setCurrentPage(
       {
         singinPage: false,
@@ -76,6 +91,7 @@ export default function App() {
   }
 
   function goToSinginPage() {
+    clearAllErrors();
     setCurrentPage(
       {
         singinPage: true,
@@ -104,6 +120,10 @@ export default function App() {
             handleChange={handleSinginFormChange}
             singinData={createAccountData}
             goToLogin={goToLoginPage}
+            errorList={errors}
+            addErrorToList={addError}
+            removeErrorFromList={removeError}
+            clearErrors={clearAllErrors}
           />
       }
       {
@@ -113,6 +133,10 @@ export default function App() {
           loginData={loginFormData}
           goToSingin={goToSinginPage}
           goToAfterLogin={goToAfterLoginPage}
+          errorList={errors}
+          addErrorToList={addError}
+          removeErrorFromList={removeError}
+          clearErrors={clearAllErrors}
         />
       }
       {

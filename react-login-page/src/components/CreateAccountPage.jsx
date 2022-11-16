@@ -13,6 +13,8 @@ export default function CreateAccountPage(props) {
 
             <h2 className="centered-text">Create Account</h2>
 
+            <p className="error-msg centered-text">{props.errorList}</p>
+
             <label htmlFor="singin-email">Email</label>
             <input 
                 type="email" 
