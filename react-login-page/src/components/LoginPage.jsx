@@ -1,5 +1,5 @@
 import React from "react";
-import { handleLogin } from "../functions";
+import { handleLogin } from "../functions/form_related_functions";
 
 export default function CreateAccountPage(props) {
 
@@ -9,9 +9,9 @@ export default function CreateAccountPage(props) {
     }
 
     return(
-        <form action="" method="POST" className="form container">
+        <form className="form container login-form">
 
-            <h2 className="centered-text">Log In</h2>
+            <h1 className="centered-text">Log In</h1>
 
             <p className="error-msg centered-text">{props.errorList}</p>
 
@@ -41,6 +41,8 @@ export default function CreateAccountPage(props) {
             >
                 Log In
             </button>
+
+            <a role="link" aria-disabled="true" className="password-forgot-link centered-text" onClick={props.goToChangePassword}>Forgot password?</a>
             
             <p className="helper-paragraph centered-text">Don't have an account ?</p>
 
@@ -48,8 +50,8 @@ export default function CreateAccountPage(props) {
                 className="create-account-singin-bnt"
                 onClick={props.goToSingin}
             >
-                Sing I
-            n</button>
+                Sing In
+            </button>
 
         </form>
     )

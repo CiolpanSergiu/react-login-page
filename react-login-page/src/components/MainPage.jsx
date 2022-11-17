@@ -8,9 +8,9 @@ export default function AfterLoginPage(props) {
     }
 
     return(
-        <div className="after-login-page">
-            <h2 className="centered-text container-main-header">Welcome to AfterLoginPage!</h2>
-            <button className="prev-page-btn" onClick={props.goToLogin}>Back</button>
+        <div className="main-page">
+            <h1 className="centered-text container-main-header">Welcome to your Main Page!</h1>
+            <button className="prev-page-btn" onClick={props.goToLogin}>Go Back</button>
             <button className="delete-account-btn" onClick={deleteAccount}>Delete Account</button>
         </div>
     )

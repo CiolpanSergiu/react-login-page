@@ -1,7 +1,8 @@
 import React from "react";
-import AfterLoginPage from "./components/AfterLoginPage";
+import MainPage from "./components/MainPage";
 import CreateAccountPage from "./components/CreateAccountPage";
 import LoginPage from "./components/LoginPage";
+import ChangePasswordPage from "./components/ChangePasswordPage";
 
 export default function App() {
 
@@ -9,26 +10,10 @@ export default function App() {
     {
       singinPage: false,
       loginPage: true,
-      afterLoginPage: false
+      mainPage: false,
+      changePasswordPage: false
     }
   )
-
-  function clearInputBoxes() {
-    setCreateAccountData(
-      {
-        singinEmail: '',
-        singinPassword: '',
-        passwordConfirmation: ''
-      }
-    )
-
-    setLoginFormData(
-      {
-        loginEmail: '',
-        loginPassword: ''
-      }
-    )
-  }
 
   const [createAccountData, setCreateAccountData] = React.useState(
     {
@@ -45,7 +30,38 @@ export default function App() {
     }
   )
 
+  const [newPasswordFormData, setnewPasswordFormData] = React.useState(
+    {
+      newPassword: "",
+      newPasswordConfirmation: ""
+    }
+  )
+
   const [errors, setErrors] = React.useState('');
+
+
+  function clearInputBoxes() {
+    setCreateAccountData(
+      {
+        singinEmail: '',
+        singinPassword: '',
+        passwordConfirmation: ''
+      }
+    )
+
+    setLoginFormData(
+      {
+        loginEmail: '',
+        loginPassword: ''
+      }
+    )
+    setnewPasswordFormData(
+      {
+        newPassword: "",
+        newPasswordConfirmation: ""
+      }
+    )
+  }
 
   function addError(msg) {
     setErrors(prevState => prevState.includes(msg) ? prevState + '' : prevState + msg)
@@ -59,57 +75,54 @@ export default function App() {
     setErrors('');
   }
 
-  function handleSinginFormChange(event) {
-    setCreateAccountData(prevState => {
-      return {
-        ...prevState,
+  function handleDataChange(prevState, event) {
+    return {
+      ...prevState,
         [event.target.name]: event.target.value
-      }
-    })
+    }
+  }
+
+  function handleSinginFormChange(event) {
+    setCreateAccountData(prevState => handleDataChange(prevState, event))
   }
 
   function handleLoginFormChange(event) {
-    
-    setLoginFormData(prevState => {
-      return {
-        ...prevState,
-        [event.target.name]: event.target.value
-      }
-    })
+    setLoginFormData(prevState => handleDataChange(prevState, event))
   }
 
-  function goToLoginPage() {
-    clearAllErrors();
+  function handleChangePasswordChange(event) {
+    setnewPasswordFormData(prevState => handleDataChange(prevState, event))
+  }
+
+  function changeCurrentPage(singin, login, main, changePassword) {
     setCurrentPage(
       {
-        singinPage: false,
-        loginPage: true,
-        afterLoginPage: false
+        singinPage: singin,
+        loginPage: login,
+        mainPage: main,
+        changePasswordPage: changePassword
       }
     )
-    clearInputBoxes();
   }
 
   function goToSinginPage() {
     clearAllErrors();
-    setCurrentPage(
-      {
-        singinPage: true,
-        loginPage: false,
-        afterLoginPage: false
-      }
-    )    
+    changeCurrentPage(true, false, false, false)
     clearInputBoxes();
   }
 
-  function goToAfterLoginPage() {
-    setCurrentPage(
-      {
-        singinPage: false,
-        loginPage: false,
-        afterLoginPage: true
-      }
-    )    
+  function goToLoginPage() {
+    clearAllErrors();
+    changeCurrentPage(false, true, false, false)
+    clearInputBoxes();
+  }
+
+  function goToMainPage() {
+    changeCurrentPage(false, false, true, false)
+  }
+
+  function goToChangePasswordPage() {
+    changeCurrentPage(false, false, false, true)
   }
 
   return(
@@ -132,17 +145,30 @@ export default function App() {
           handleChange={handleLoginFormChange}
           loginData={loginFormData}
           goToSingin={goToSinginPage}
-          goToAfterLogin={goToAfterLoginPage}
+          goMainPage={goToMainPage}
           errorList={errors}
           addErrorToList={addError}
           removeErrorFromList={removeError}
           clearErrors={clearAllErrors}
+          goToChangePassword={goToChangePasswordPage}
         />
       }
       {
-        currentPage.afterLoginPage &&
-        <AfterLoginPage 
+        currentPage.mainPage &&
+        <MainPage 
           goToLogin={goToLoginPage}
+        />
+      }
+      {
+        currentPage.changePasswordPage &&
+        <ChangePasswordPage 
+          goToLogin={goToLoginPage}
+          newPasswordData={newPasswordFormData}
+          handleChange={handleChangePasswordChange}
+          errorList={errors}
+          addErrorToList={addError}
+          removeErrorFromList={removeError}
+          clearErrors={clearAllErrors}
         />
       }
     </div>

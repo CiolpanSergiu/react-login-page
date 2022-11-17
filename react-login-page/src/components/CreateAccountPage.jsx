@@ -1,5 +1,5 @@
 import React from "react";
-import { saveUserAccount } from "../functions";
+import { saveUserAccount } from "../functions/form_related_functions";
 
 export default function CreateAccountPage(props) {
 
@@ -9,9 +9,9 @@ export default function CreateAccountPage(props) {
     }
 
     return(
-        <form className="form container">
+        <form className="form container create-account-form">
 
-            <h2 className="centered-text">Create Account</h2>
+            <h1 className="centered-text">Create Account</h1>
 
             <p className="error-msg centered-text">{props.errorList}</p>
 
