@@ -1,5 +1,6 @@
 import React from "react";
 import { updatePassword } from "../functions/form_related_functions";
+import { invalidPasswordMsg, notSamePasswordMsg } from "../functions/form_related_functions";
 
 export default function ChangePasswordPage(props) {
 
@@ -13,8 +14,6 @@ export default function ChangePasswordPage(props) {
 
             <h1 className="centered-text container-main-header">Change Password</h1>
 
-            <p className="error-msg centered-text">{props.errorList}</p>
-
             <label htmlFor="new-password">New password</label>
             <input 
                 id="new-password"
@@ -24,6 +23,7 @@ export default function ChangePasswordPage(props) {
                 name="newPassword"
                 value={props.newPasswordData.newPassword}
             />
+            <p className="error-msg">{props.errorList.includes(invalidPasswordMsg) ? invalidPasswordMsg : ""}</p>
 
             <label htmlFor="new-password-confirmation">New password confirm</label>
             <input 
@@ -34,6 +34,8 @@ export default function ChangePasswordPage(props) {
                 name="newPasswordConfirmation"
                 value={props.newPasswordData.newPasswordConfirmation}
             />
+            <p className="error-msg">{props.errorList.includes(invalidPasswordMsg) ? invalidPasswordMsg : ""}</p>
+            <p className="error-msg">{props.errorList.includes(notSamePasswordMsg) ? notSamePasswordMsg : ""}</p>
 
             <button className="change-password-btn" onClick={onSubmit}>Change Password</button>
 

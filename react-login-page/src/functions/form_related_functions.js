@@ -1,9 +1,9 @@
-const notSamePasswordMsg = "Passwords do not match.";
-const invalidEmailMsg = "Invalid email.";
-const invalidPasswordMsg = "Invalid password.";
+export const notSamePasswordMsg = "Passwords do not match.";
+export const invalidEmailMsg = "Invalid email.";
+export const invalidPasswordMsg = "Invalid password.";
 
-const incorrectEmailMsg = "Incorrect email.";
-const incorrectPasswordMsg = "Incorrect password.";
+export const incorrectEmailMsg = "Incorrect email.";
+export const incorrectPasswordMsg = "Incorrect password.";
 
 //found on google ofc...on mozila dev form validation page
 const emailReg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/

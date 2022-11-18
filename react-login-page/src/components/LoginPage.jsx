@@ -1,5 +1,6 @@
 import React from "react";
 import { handleLogin } from "../functions/form_related_functions";
+import { incorrectEmailMsg, incorrectPasswordMsg } from "../functions/form_related_functions";
 
 export default function CreateAccountPage(props) {
 
@@ -13,27 +14,27 @@ export default function CreateAccountPage(props) {
 
             <h1 className="centered-text">Log In</h1>
 
-            <p className="error-msg centered-text">{props.errorList}</p>
-
             <label htmlFor="login-email">Email</label>
             <input 
                 type="email" 
                 id="login-email" 
-                placeholder="test.email@gmail.com" 
+                placeholder="E.g: test.email@gmail.com" 
                 name="loginEmail"
                 onChange={props.handleChange}
                 value={props.loginData.loginEmail}
             />
+            <p className="error-msg">{props.errorList.includes(incorrectEmailMsg) ? incorrectEmailMsg : ""}</p>
 
             <label htmlFor="login-password">Password</label>
             <input 
                 type="password" 
                 id="login-password" 
-                placeholder="Password123"
+                placeholder="E.g: Password123"
                 name="loginPassword"
                 onChange={props.handleChange}
                 value={props.loginData.loginPassword}
             />
+            <p className="error-msg">{props.errorList.includes(incorrectPasswordMsg) ? incorrectPasswordMsg : ""}</p>
 
             <button 
                 className="create-account-login-bnt"
